@@ -1,6 +1,7 @@
 import { useEffect } from "react";
-import { useUser } from "../contexts/user";
+import { useAuthContext } from "../contexts/user";
 import { Navigate } from "react-router-dom";
+import { useUser } from "..";
 
 interface Props {
   redirectTo: string;
@@ -9,7 +10,8 @@ interface Props {
 }
 
 export const AuthGuard = ({ loader, redirectTo, children }: Props) => {
-  const { getUser, state } = useUser();
+  const { state } = useAuthContext();
+  const { getUser } = useUser();
 
   useEffect(() => {
     if (state === "loading") {

@@ -24,7 +24,7 @@ export const useAuth = (): UseAuthReturn => {
   const login = async (body: LoginForm) => {
     const logged = await loginFetch({ ...body, projectCluster }, version);
     if (logged.status === "error") return false;
-    const res = await getUserData();
+    const res = await getUserData(version);
     if (res.status === "error") return false;
     setData(res.data);
     setState("logged");
