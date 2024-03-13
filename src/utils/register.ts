@@ -2,28 +2,27 @@ import { serverAPI } from "../config";
 import { AUTH } from "../constants/endpoints";
 import { ApiResponse } from "../interfaces/apiResponse";
 import { Version } from "../interfaces/versions";
-import { setAuthCookie } from "./authCookie";
 
-export interface LoginForm {
+export interface RegisterForm {
   login: string;
   password: string;
 }
 
-interface LoginFetchReturn {
+interface RegisterFetchReturn {
   status: "error" | "success";
   message: string;
 }
 
-interface LoginFetchBody extends LoginForm {
+interface RegisterFetchBody extends RegisterForm {
   projectCluster: string;
 }
 
-export async function loginFetch(
-  body: LoginFetchBody,
+export const registerFetch = async (
+  body: RegisterFetchBody,
   version: Version
-): Promise<LoginFetchReturn> {
+): Promise<RegisterFetchReturn> => {
   const response = await fetch(
-    serverAPI + AUTH.BASE + `/${version}` + AUTH.LOGIN,
+    serverAPI + AUTH.BASE + `/${version}` + AUTH.REGISTER,
     {
       method: "POST",
       headers: {
@@ -40,9 +39,8 @@ export async function loginFetch(
       message: json.message,
     };
   }
-  setAuthCookie(json.data);
   return {
     status: "success",
     message: json.message,
   };
-}
+};

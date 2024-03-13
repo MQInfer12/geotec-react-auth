@@ -2,74 +2,56 @@ import { createContext, useContext, useMemo, useState } from "react";
 import { User } from "../interfaces/user";
 import { MenuPadre } from "../interfaces/menu";
 import { Acceso } from "../interfaces/acceso";
-import { LoginForm, loginFetch } from "../utils/login";
-import { getUserData } from "../utils/getUserData";
-import { logoutFetch } from "../utils/logout";
 import { getAuthCookie } from "../utils/authCookie";
+import { Version } from "../interfaces/versions";
 
-interface Data {
+export interface Data {
   user?: User;
   menus?: MenuPadre[];
   accesos?: Acceso[];
 }
 
-type AuthState = "unlogged" | "loading" | "logged";
+export type AuthState = "unlogged" | "loading" | "logged";
 
 interface AuthContextValue extends Data {
   state: AuthState;
-  login: (body: LoginForm) => Promise<boolean>;
-  getUser: () => Promise<boolean>;
-  logout: () => Promise<boolean>;
+  projectCluster: string;
+  version: Version;
+  setData: React.Dispatch<React.SetStateAction<Data | null>>;
+  setState: React.Dispatch<React.SetStateAction<AuthState>>;
 }
 
 interface Props {
   projectCluster: string;
+  version: Version;
   children: React.ReactNode;
 }
 
 const Ctx = createContext<AuthContextValue | null>(null);
 
-export const AuthContext = ({ projectCluster, children }: Props) => {
+export const AuthContext = ({ projectCluster, version, children }: Props) => {
   const token = getAuthCookie();
   const [data, setData] = useState<Data | null>(null);
   const [state, setState] = useState<AuthState>(token ? "loading" : "unlogged");
 
-  const login = async (body: LoginForm) => {
-    const logged = await loginFetch({ ...body, projectCluster });
-    if (logged.status === "error") return false;
-    const res = await getUserData();
-    if (res.status === "error") return false;
-    setData(res.data);
-    setState("logged");
-    return true;
-  };
-
-  const getUser = async () => {
-    const res = await getUserData();
-    if (res.status === "error") return false;
-    setData(res.data);
-    setState("logged");
-    return true;
-  };
-
-  const logout = async () => {
-    await logoutFetch();
-    setData(null);
-    setState("unlogged");
-    return true;
-  };
-
-  const value = useMemo(
-    () => ({ ...data, state, login, logout, getUser }),
-    [data, state, login, logout, getUser]
+  const value = useMemo<AuthContextValue>(
+    () => ({
+      ...data,
+      state,
+      projectCluster,
+      version,
+      setState,
+      setData,
+    }),
+    [data, state, projectCluster, version, setState, setData]
   );
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 };
 
-export const useUser = () => {
+export const useAuthContext = () => {
   const context = useContext(Ctx);
   if (!context) {
-    throw new Error("useUser debe usarse dentro de un AuthContext");
+    throw new Error("useAuthContext debe usarse dentro de un AuthContext");
   }
   return context;
 };

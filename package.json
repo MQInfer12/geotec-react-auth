@@ -1,10 +1,8 @@
 {
   "name": "geotec-react-auth",
-  "private": true,
-  "version": "0.0.0",
+  "version": "1.0.6",
   "type": "module",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "exports": "./src/index.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

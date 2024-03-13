@@ -4,6 +4,7 @@ import { Acceso } from "../interfaces/acceso";
 import { ApiResponse } from "../interfaces/apiResponse";
 import { MenuPadre } from "../interfaces/menu";
 import { User } from "../interfaces/user";
+import { Version } from "../interfaces/versions";
 import { deleteAuthCookie, getAuthCookie } from "./authCookie";
 
 interface ErrorReturn {
@@ -22,11 +23,13 @@ interface SuccessReturn {
 
 type GetUserDataReturn = ErrorReturn | SuccessReturn;
 
-export async function getUserData(): Promise<GetUserDataReturn> {
+export async function getUserData(
+  version: Version
+): Promise<GetUserDataReturn> {
   const token = getAuthCookie();
 
   const response = await fetch(
-    serverAPI + AUTH.ME,
+    serverAPI + AUTH.BASE + `/${version}` + AUTH.ME,
     token
       ? {
           headers: {
