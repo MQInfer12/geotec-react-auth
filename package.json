@@ -1,8 +1,9 @@
 {
   "name": "geotec-react-auth",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "type": "module",
   "exports": "./src/index.ts",
+  "keywords": ["geotec", "react", "auth"],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
