@@ -4,13 +4,12 @@ import { Navigate } from "react-router-dom";
 import { useUser } from "..";
 
 interface Props {
-  redirectTo: string;
   loader: React.ReactNode;
   children: React.ReactNode;
 }
 
-export const AuthGuard = ({ loader, redirectTo, children }: Props) => {
-  const { state } = useAuthContext();
+export const AuthGuard = ({ loader, children }: Props) => {
+  const { state, logoutRoute } = useAuthContext();
   const { getUser } = useUser();
 
   useEffect(() => {
@@ -20,6 +19,6 @@ export const AuthGuard = ({ loader, redirectTo, children }: Props) => {
   }, []);
 
   if (state === "loading") return loader;
-  if (state === "unlogged") return <Navigate to={redirectTo} />;
+  if (state === "unlogged") return <Navigate to={logoutRoute} />;
   return children;
 };

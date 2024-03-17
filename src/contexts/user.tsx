@@ -17,6 +17,7 @@ interface AuthContextValue extends Data {
   state: AuthState;
   projectCluster: string;
   version: Version;
+  logoutRoute: string;
   setData: React.Dispatch<React.SetStateAction<Data | null>>;
   setState: React.Dispatch<React.SetStateAction<AuthState>>;
 }
@@ -24,12 +25,18 @@ interface AuthContextValue extends Data {
 interface Props {
   projectCluster: string;
   version: Version;
+  logoutRoute: string;
   children: React.ReactNode;
 }
 
 const Ctx = createContext<AuthContextValue | null>(null);
 
-export const AuthContext = ({ projectCluster, version, children }: Props) => {
+export const AuthContext = ({
+  projectCluster,
+  version,
+  logoutRoute,
+  children,
+}: Props) => {
   const token = getAuthCookie();
   const [data, setData] = useState<Data | null>(null);
   const [state, setState] = useState<AuthState>(token ? "loading" : "unlogged");
@@ -42,8 +49,9 @@ export const AuthContext = ({ projectCluster, version, children }: Props) => {
       version,
       setState,
       setData,
+      logoutRoute,
     }),
-    [data, state, projectCluster, version, setState, setData]
+    [data, state, projectCluster, version, setState, setData, logoutRoute]
   );
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 };
