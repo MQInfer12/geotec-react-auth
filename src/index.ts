@@ -1,3 +1,4 @@
+import "./tailwind.css";
 
 export { serverAPI as gatewayAPI } from "./config";
 
@@ -10,6 +11,8 @@ export { useAuth } from "./hooks/useAuth";
 export type { LoginForm } from "./utils/login";
 export type { RegisterForm } from "./utils/register";
 
-export { PageContainer }  from "./components/common/pageContainer/pageContainer";
+export { PageContainer } from "./components/common/pageContainer/pageContainer";
 
-import "./tailwind.css"
+export { TableContainer } from "./components/common/table/tableContainer";
+
+

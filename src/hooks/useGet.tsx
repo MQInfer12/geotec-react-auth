@@ -16,7 +16,11 @@ interface Options {
   send?: boolean;
 }
 
-export const useGet = <T,>(route: string, opt?: Options): ReturnValues<T> => {
+export const useGet = <T,>(
+  route: string,
+  opt?: Options,
+  otherService?: boolean
+): ReturnValues<T> => {
   const options = {
     send: opt?.send ?? true,
   };
@@ -28,9 +32,14 @@ export const useGet = <T,>(route: string, opt?: Options): ReturnValues<T> => {
   const getData = async () => {
     setLoading(true);
     try {
+      let endPoint = serverAPI + route;
+
+      //if the user wants to use another service
+      if (otherService) endPoint = route;
+
       const token = getAuthCookie();
       const response = await fetch(
-        serverAPI + route,
+        endPoint,
         token
           ? {
               headers: {
@@ -47,7 +56,18 @@ export const useGet = <T,>(route: string, opt?: Options): ReturnValues<T> => {
         isValidResponse = false;
       }
       if (isValidResponse) {
-        const json: ApiResponse<T> = await response.json();
+        let json: ApiResponse<T> = await response.json();
+
+        //if the user used another service
+        if (otherService) {
+          json = {
+            message: "Datos obtenidos con exito",
+            status: 200,
+            //@ts-ignore
+            data: json.cabecera,
+          };
+        }
+
         setRes(json);
       }
     } catch (error) {
