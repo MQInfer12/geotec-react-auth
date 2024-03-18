@@ -1,11 +1,10 @@
-import { UserRes } from "../../interfaces/user";
+/* import { UserRes } from "../../interfaces/user";
 import Floating from "../common/floating";
 import Modal from "../common/modal";
 import { useModal } from "../common/modal/hook/useModal";
 
-interface Props {}
 
-const Usuario = ({}: Props) => {
+const Usuario = () => {
   const { state, item, openModal, closeModal } =
     useModal<UserRes>("Formulario usuario");
   const {
@@ -27,4 +26,4 @@ const Usuario = ({}: Props) => {
   );
 };
 
-export default Usuario;
+export default Usuario; */
