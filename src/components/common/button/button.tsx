@@ -1,5 +1,5 @@
 import { AnyFunction } from "../../../interfaces/AnyFunction";
-import "../../../index.css";
+import "@/index.css";
 
 type ButtonType = "primary" | "secondary" | "tertiary" | "quaternary" | "tab";
 
