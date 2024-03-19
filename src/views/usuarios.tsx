@@ -6,7 +6,7 @@ import Floating from "@/components/common/floating";
 import Form from "@/components/common/form/form";
 import { GrupoRes } from "@/interfaces/GrupoRes";
 
-const Users = () => {
+export const Users = () => {
   const { res, getData } = useGet<UsuarioRes[]>(ENDPOINTS.USUARIO.GET);
 
   const {
@@ -89,4 +89,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+
