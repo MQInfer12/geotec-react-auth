@@ -24,7 +24,7 @@ export const useTableConfig = (
   name?: string
 ) => {
   /*   const { tableConfig } = useUser(); */
-  const tableConfig = null;
+  const tableConfig = null; 
   const getLocalStorage = () => {
     if (!name) return null;
 

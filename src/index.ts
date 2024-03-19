@@ -1,5 +1,6 @@
 import "./tailwind.css";
 
+
 export { serverAPI as gatewayAPI } from "./config";
 
 export { AuthGuard } from "./components/authGuard";
@@ -16,3 +17,6 @@ export { PageContainer } from "./components/common/pageContainer/pageContainer";
 export { TableContainer } from "./components/common/table/tableContainer";
 
 
+export { useGet } from "./hooks/useGet";
+
+export {createColumns} from "./utils/createColumns"

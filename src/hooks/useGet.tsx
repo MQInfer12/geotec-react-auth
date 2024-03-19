@@ -49,6 +49,7 @@ export const useGet = <T,>(
             }
           : undefined
       );
+      console.log(response);
       let isValidResponse = true;
       if (response.status === 401) {
         navigate(logoutRoute);

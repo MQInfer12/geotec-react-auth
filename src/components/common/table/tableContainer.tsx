@@ -6,7 +6,7 @@ import TableSkeleton from "./tableSkeleton";
 import { Control } from "../controls/controls";
 import { useTableConfig } from "./hooks/useTableConfig";
 import { MarkersType, SaveSearchType } from "@/interfaces/SaveSearch";
-import { alertSuccess } from "@/utils/alertsToast";
+import { alertSuccess } from "../../../utils/alertsToast";
 
 export interface TableButton {
   title: string;

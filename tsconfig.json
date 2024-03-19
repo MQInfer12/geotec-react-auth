@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "paths": {
-      "@assets/*": ["./src/assets/*"],
-      "@/*": ["./src/*"]
-    },
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
@@ -22,7 +18,14 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    
+    "baseUrl": ".",
+    "paths": {
+      "@assets/*": ["./src/assets/*"],
+      "@/*": ["./src/*", "./dist/*", ""]
+    },
+
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
