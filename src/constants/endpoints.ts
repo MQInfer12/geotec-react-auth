@@ -3,6 +3,7 @@ export enum AUTH {
   LOGIN = "/login",
   ME = "/me",
   REGISTER = "/register",
+  PASSWORD = "/password"
 }
 
 enum GRUPO {

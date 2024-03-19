@@ -8,3 +8,4 @@ export { useAuth } from "./hooks/useAuth";
 
 export type { LoginForm } from "./utils/login";
 export type { RegisterForm } from "./utils/register";
+export type { PasswordForm } from "./utils/password";

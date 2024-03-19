@@ -1,14 +1,11 @@
+import { ResponseReturn } from "../interfaces/responseReturn";
 import { deleteAuthCookie } from "./authCookie";
 
-interface LogoutFetchReturn {
-  status: "error" | "success";
-  message: string;
-}
-
-export async function logoutFetch(): Promise<LogoutFetchReturn> {
+export async function logoutFetch(): Promise<ResponseReturn> {
   deleteAuthCookie();
   return {
     status: "success",
     message: "Cierre de sesión correcto",
+    data: undefined,
   };
 }

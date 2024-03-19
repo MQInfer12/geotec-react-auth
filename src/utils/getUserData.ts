@@ -3,29 +3,18 @@ import { AUTH } from "../constants/endpoints";
 import { Acceso } from "../interfaces/acceso";
 import { ApiResponse } from "../interfaces/apiResponse";
 import { MenuPadre } from "../interfaces/menu";
+import { ResponseReturn } from "../interfaces/responseReturn";
 import { User } from "../interfaces/user";
 import { Version } from "../interfaces/versions";
 import { deleteAuthCookie, getAuthCookie } from "./authCookie";
 
-interface ErrorReturn {
-  status: "error";
-  message: string;
-}
-interface SuccessReturn {
-  status: "success";
-  message: string;
-  data: {
+export async function getUserData(version: Version): Promise<
+  ResponseReturn<{
     user: User;
     menus: MenuPadre[];
     accesos: Acceso[];
-  };
-}
-
-type GetUserDataReturn = ErrorReturn | SuccessReturn;
-
-export async function getUserData(
-  version: Version
-): Promise<GetUserDataReturn> {
+  }>
+> {
   const token = getAuthCookie();
 
   const response = await fetch(

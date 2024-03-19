@@ -2,44 +2,50 @@ import { serverAPI } from "../config";
 import { AUTH } from "../constants/endpoints";
 import { ApiResponse } from "../interfaces/apiResponse";
 import { ResponseReturn } from "../interfaces/responseReturn";
+import { User } from "../interfaces/user";
 import { Version } from "../interfaces/versions";
-import { setAuthCookie } from "./authCookie";
+import { getAuthCookie } from "./authCookie";
 
-export interface LoginForm {
-  login: string;
-  password: string;
+export interface PasswordForm {
+  actual: string;
+  confirm: string;
+  new: string;
 }
 
-interface LoginFetchBody extends LoginForm {
-  projectCluster: string;
-}
-
-export async function loginFetch(
-  body: LoginFetchBody,
+export async function passwordFetch(
+  body: PasswordForm,
   version: Version
-): Promise<ResponseReturn> {
+): Promise<ResponseReturn<User>> {
+  const token = getAuthCookie();
+  console.log(token);
+  if (!token) {
+    return {
+      status: "error",
+      message: "No has iniciado sesión",
+    };
+  }
   const response = await fetch(
-    serverAPI + AUTH.BASE + `/${version}` + AUTH.LOGIN,
+    serverAPI + AUTH.BASE + `/${version}` + AUTH.PASSWORD,
     {
-      method: "POST",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        Authorization: "Bearer " + token,
       },
       body: JSON.stringify(body),
     }
   );
-  const json: ApiResponse<string> = await response.json();
+  const json: ApiResponse<User> = await response.json();
   if (!response.ok) {
     return {
       status: "error",
       message: json.message,
     };
   }
-  setAuthCookie(json.data);
   return {
     status: "success",
     message: json.message,
-    data: undefined,
+    data: json.data,
   };
 }
