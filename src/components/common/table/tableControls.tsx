@@ -197,7 +197,9 @@ const TableControls = ({
           </Button>
         </div>
       )}
-      <div className="flex-1 overflow-auto">{children}</div>
+      <div className="flex-1 overflow-auto h-96">
+        {children}
+      </div>
     </div>
   );
 };

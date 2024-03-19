@@ -18,10 +18,9 @@ interface Props {
 //getCoreRowModel -->all files
 //getRowModel --> just some data
 const TablePDF = ({ table, filter, dataFiltered }: Props) => {
-  console.log(filter);
 
   return (
-    <PDFViewer height={"100%"} width={"100%"}>
+    <PDFViewer height={"450px"} width={"100%"}>
       <Document>
         <Page>
           <View style={styles.tableContainer}>

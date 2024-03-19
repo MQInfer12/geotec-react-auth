@@ -17,7 +17,7 @@ export interface VisibleColumn {
   order: number;
 }
 
-export const localTableConfigName = "tableConfig";
+export const localTableConfigName = "tableConfig-auth";
 
 export const useTableConfig = (
   columns: ColumnDef<any, any>[],

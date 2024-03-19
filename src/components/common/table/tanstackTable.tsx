@@ -58,6 +58,7 @@ const TanstackTable = forwardRef(
     }: Props,
     tableRef: React.ForwardedRef<HTMLTableElement>
   ) => {
+
     const table = useReactTable({
       data,
       columns,
@@ -84,6 +85,8 @@ const TanstackTable = forwardRef(
         getRowStyles: rowStyle ? rowStyle : () => {},
       },
     });
+
+    console.log(table.getCoreRowModel().rows);
 
     const thStyle =
       "px-2 py-2 bg-gray-100 border border-solid border-gray-300 text-sm font-medium text-gray-700 text-start select-none active:cursor-w-resize";

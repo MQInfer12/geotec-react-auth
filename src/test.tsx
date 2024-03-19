@@ -2,27 +2,19 @@ import { useEffect, useState } from "react";
 import { PageContainer, TableContainer, createColumns } from ".";
 import { ApiResponse } from "./interfaces/apiResponse";
 
-export interface UsuarioRes {
+export interface BancoRes {
     id: number;
-    idTipoUsuario: number;
-    idEmpresa: number;
-    nombreContacto: string;
-    nombreTipoUsuario: string;
-    idContacto: number;
-    idAccion: number;
-    telefono: string;
-    login: string;
-    password: string;
-    codigoSecreto?: string;
-    firma?: string;
-    notificacion?: string;
-    estadoBot?: string;
-    codigoBot?: string;
-    activo: boolean;
+    nombre: string;
+    direccion:string;
+    direccion2:string;
+    codigoPostal:string;
+    ciudad:string;
+    email:string;
+    telefono:string
   }
   
 const Test = () => {
-  const [res, setRes] = useState<ApiResponse<UsuarioRes>>({} as ApiResponse<UsuarioRes>);
+  const [res, setRes] = useState<ApiResponse<BancoRes[]>>({} as ApiResponse<BancoRes[]>);
   const getData = async () => {
     try {
       const response = await fetch("http://localhost:5121/recBanco", {
@@ -32,7 +24,6 @@ const Test = () => {
         },
       });
       const res = await response.json();
-      console.log(res);
       setRes(res);
 
       //setRes(json);
@@ -45,49 +36,41 @@ const Test = () => {
     getData();
   }, []);
 
-  const columns = createColumns<UsuarioRes>([
+  const columns = createColumns<BancoRes>([
     {
       header: "Nombre",
-      accessorKey: "login",
+      accessorKey: "nombre",
     },
     {
-      header: "Tipo usuario",
-      accessorKey: "nombreTipoUsuario",
+      header: "Direccion",
+      accessorKey: "direccion",
     },
     {
-      header: "Empresa",
-      accessorKey: "idEmpresa",
+      header: "Segunda direccion",
+      accessorKey: "direccion2",
     },
     {
-      header: "Contacto",
-      accessorKey: "nombreContacto",
+      header: "Codigo postal",
+      accessorKey: "codigoPostal",
+    },
+    {
+      header: "Ciudad",
+      accessorKey: "ciudad",
+    },
+    {
+      header: "Email",
+      accessorKey: "email",
     },
     {
       header: "Telefono",
       accessorKey: "telefono",
-    },
-    {
-      header: "Firma",
-      accessorKey: "firma",
-    },
-    {
-      header: "Estado bot",
-      accessorKey: "estadoBot",
-    },
-    {
-      header: "Codigo bot",
-      accessorKey: "codigoBot",
-    },
-    {
-      header: "Activo",
-      accessorKey: "activo",
     },
   ]);
 
   return (
     <PageContainer title="hola">
       <TableContainer
-        name="usuarios"
+        name="roles"
         fixKey="id"
         columns={columns}
         data={res?.data}
