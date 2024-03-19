@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import { AuthContext } from ".";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 /* import Test from "./views/test"; */
-import {Users} from "./views/usuarios";
-
+ import {Users} from "./views/usuarios"; 
+/* import {Grupos } from "./views/grupos"; */
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <>
     <React.StrictMode>

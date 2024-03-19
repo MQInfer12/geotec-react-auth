@@ -27,7 +27,19 @@ enum USUARIO {
   DELETE = USUARIO.BASE + "/",
 }
 
+enum MENU {
+  BASE = "riMenu",
+  GET = MENU.BASE,
+  GETALL = MENU.BASE + "/all",
+  FIND = MENU.BASE + "/",
+  POST = MENU.BASE,
+  PUT = MENU.BASE + "/",
+  DELETE = MENU.BASE + "/",
+  DASHBOARD = MENU.BASE + "/dashboard",
+}
+
 export const ENDPOINTS = {
   GRUPO,
-  USUARIO
+  USUARIO,
+  MENU
 };
