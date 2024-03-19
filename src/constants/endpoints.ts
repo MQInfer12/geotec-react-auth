@@ -17,7 +17,7 @@ enum GRUPO {
 }
 
 enum USUARIO {
-  BASE = "recUsuario",
+  BASE = "Usuarios",
   GET = USUARIO.BASE,
   GETALL = USUARIO.BASE + "/all",
   FIND = USUARIO.BASE + "/",

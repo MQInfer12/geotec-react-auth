@@ -37,7 +37,9 @@ export const useGet = <T,>(
       //if the user wants to use another service
       if (otherService) endPoint = route;
 
-      const token = getAuthCookie();
+      //const token = getAuthCookie();
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjA2Y2NlNGE0LTE2YzQtNDUwOC05MWFlLWZkYzUxYTI3NWQxYiIsImV4cCI6MTcxMDk0ODEwMSwiaXNzIjoiaHR0cHM6Ly9nZW90ZWMuY29tIiwiYXVkIjoiaHR0cHM6Ly9nZW90ZWMuY29tIn0.uXzObZg7YqySCK6db383nr5YN6V6SKxOoXLptCSfnrY";
       const response = await fetch(
         endPoint,
         token
@@ -49,7 +51,6 @@ export const useGet = <T,>(
             }
           : undefined
       );
-      console.log(response);
       let isValidResponse = true;
       if (response.status === 401) {
         navigate(logoutRoute);

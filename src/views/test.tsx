@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { PageContainer, TableContainer, createColumns } from ".";
-import { ApiResponse } from "./interfaces/apiResponse";
+import { PageContainer, TableContainer, createColumns } from "..";
+import { ApiResponse } from "../interfaces/apiResponse";
 
 export interface BancoRes {
     id: number;

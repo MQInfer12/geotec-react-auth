@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { AuthContext } from ".";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Test from "./test";
+/* import Test from "./views/test"; */
+import Users from "./views/usuarios";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <>
@@ -10,11 +11,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <AuthContext logoutRoute={"/"} projectCluster="ERP" version="v1">
         <BrowserRouter>
           <Routes>
-            <Route path="" element={<Test />} />
+            <Route path="" element={<Users />} />
           </Routes>
         </BrowserRouter>
       </AuthContext>
     </React.StrictMode>
-    {/*   <Usuario /> */}
   </>
 );
