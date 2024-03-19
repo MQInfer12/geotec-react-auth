@@ -1,5 +1,6 @@
 
 
+
 export interface UsuarioRes {
     id:number;
     login: string
@@ -9,5 +10,6 @@ export interface UsuarioRes {
     firma: string
     notificacion: string
     proyecto: string
+
   }
   
