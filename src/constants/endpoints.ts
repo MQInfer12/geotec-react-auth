@@ -7,7 +7,7 @@ export enum AUTH {
 }
 
 enum GRUPO {
-  BASE = "recGrupo",
+  BASE = "RecGrupo",
   GET = GRUPO.BASE,
   GETALL = GRUPO.BASE + "/all",
   FIND = GRUPO.BASE + "/",
@@ -18,7 +18,7 @@ enum GRUPO {
 }
 
 enum USUARIO {
-  BASE = "recUsuario",
+  BASE = "Usuarios",
   GET = USUARIO.BASE,
   GETALL = USUARIO.BASE + "/all",
   FIND = USUARIO.BASE + "/",
@@ -28,7 +28,19 @@ enum USUARIO {
   DELETE = USUARIO.BASE + "/",
 }
 
+enum MENU {
+  BASE = "riMenu",
+  GET = MENU.BASE,
+  GETALL = MENU.BASE + "/all",
+  FIND = MENU.BASE + "/",
+  POST = MENU.BASE,
+  PUT = MENU.BASE + "/",
+  DELETE = MENU.BASE + "/",
+  DASHBOARD = MENU.BASE + "/dashboard",
+}
+
 export const ENDPOINTS = {
   GRUPO,
-  USUARIO
+  USUARIO,
+  MENU
 };
