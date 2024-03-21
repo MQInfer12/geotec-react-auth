@@ -1,0 +1,24 @@
+const IconDarkMode = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 14 14"
+      height="14"
+      width="14"
+    >
+      <g id="waning-cresent-moon--night-new-moon-crescent-weather-time-waning">
+        <path
+          id="Vector"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M8 7c0.00471 -1.21237 0.32421 -2.40274 0.92723 -3.45452S10.3961 1.61657 11.44 1C10.6659 0.679515 9.83775 0.509809 9 0.5c-1.72391 0 -3.37721 0.68482 -4.59619 1.90381C3.18482 3.62279 2.5 5.27609 2.5 7s0.68482 3.3772 1.90381 4.5962C5.62279 12.8152 7.27609 13.5 9 13.5c0.84786 -0.006 1.6866 -0.1758 2.47 -0.5 -1.0495 -0.6128 -1.92131 -1.4883 -2.52974 -2.5404C8.33183 9.40759 8.00779 8.21528 8 7v0Z"
+          strokeWidth="1"
+        ></path>
+      </g>
+    </svg>
+  );
+};
+
+export default IconDarkMode;

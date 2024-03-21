@@ -1,4 +1,4 @@
-import { Data, useAuthContext } from "../contexts/user";
+import { Data, useAuthContext } from "../contexts/auth";
 import { getUserData } from "../utils/getUserData";
 
 interface UseUserReturn extends Data {

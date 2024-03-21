@@ -1,0 +1,26 @@
+.dashboard {
+  width: 100vw;
+  height: 100dvh;
+  display: grid;
+  grid-template-areas: 
+    "aside links header"
+    "aside links main";
+  grid-template-columns: auto auto 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+.header {
+  grid-area: header;
+}
+
+.aside {
+  grid-area: aside;
+}
+
+.right{
+  grid-area: links;
+}
+
+.main {
+  grid-area: main;
+}

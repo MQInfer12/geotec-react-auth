@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ApiResponse } from "../interfaces/apiResponse";
 import { deleteAuthCookie, getAuthCookie } from "../utils/authCookie";
 import { serverAPI } from "../config";
-import { useAuthContext } from "../contexts/user";
+import { useAuthContext } from "../contexts/auth";
 
 interface ReturnValues<T> {
   res: ApiResponse<T> | null;

@@ -20,6 +20,13 @@ interface AuthContextValue extends Data {
   logoutRoute: string;
   setData: React.Dispatch<React.SetStateAction<Data | null>>;
   setState: React.Dispatch<React.SetStateAction<AuthState>>;
+  routeComponents: Record<
+    string,
+    {
+      name: string;
+      component: JSX.Element;
+    }
+  >;
 }
 
 interface Props {
@@ -27,6 +34,13 @@ interface Props {
   version: Version;
   logoutRoute: string;
   children: React.ReactNode;
+  routeComponents?: Record<
+    string,
+    {
+      name: string;
+      component: JSX.Element;
+    }
+  >;
 }
 
 const Ctx = createContext<AuthContextValue | null>(null);
@@ -36,6 +50,7 @@ export const AuthContext = ({
   version,
   logoutRoute,
   children,
+  routeComponents = {},
 }: Props) => {
   const token = getAuthCookie();
   const [data, setData] = useState<Data | null>(null);
@@ -50,8 +65,18 @@ export const AuthContext = ({
       setState,
       setData,
       logoutRoute,
+      routeComponents,
     }),
-    [data, state, projectCluster, version, setState, setData, logoutRoute]
+    [
+      data,
+      state,
+      projectCluster,
+      version,
+      setState,
+      setData,
+      logoutRoute,
+      routeComponents,
+    ]
   );
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 };

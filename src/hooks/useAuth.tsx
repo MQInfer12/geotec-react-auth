@@ -1,4 +1,4 @@
-import { useAuthContext } from "../contexts/user";
+import { useAuthContext } from "../contexts/auth";
 import { getUserData } from "../utils/getUserData";
 import { LoginForm, loginFetch } from "../utils/login";
 import { logoutFetch } from "../utils/logout";

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { serverAPI } from "../config";
 import { ApiResponse } from "../interfaces/apiResponse";
 import { deleteAuthCookie, getAuthCookie } from "../utils/authCookie";
-import { useAuthContext } from "../contexts/user";
+import { useAuthContext } from "../contexts/auth";
 
 interface Options {
   headers?: Record<string, string>;
