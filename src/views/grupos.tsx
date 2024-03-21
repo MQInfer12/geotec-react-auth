@@ -1,14 +1,19 @@
 import { ENDPOINTS } from "@/constants/endpoints";
 import { GrupoRes } from "@/interfaces/GrupoRes";
-import { PageContainer, TableContainer, createColumns, useGet } from "..";
 import { useModal } from "@/components/common/modal/hook/useModal";
 import Floating from "@/components/common/floating";
- import AsignarMenus from "./components/asignarAccesos"; 
+import AsignarMenus from "./components/asignarAccesos";
+import { createColumns } from "@/utils/createColumns";
+import { useGet } from "@/hooks/useGet";
+import { PageContainer } from "@/components/common/pageContainer/pageContainer";
+import { TableContainer } from "@/components/common/table/tableContainer";
 
-export const Grupos = () => {
- const { res, getData, modifyData } = useGet<GrupoRes[]>(ENDPOINTS.GRUPO.GET); 
+interface Props {
+  alertSuccess: (msg: string) => void;
+}
 
-
+export const Grupos = ({ alertSuccess }: Props) => {
+  const { res, getData, modifyData } = useGet<GrupoRes[]>(ENDPOINTS.GRUPO.GET);
 
   const {
     state: stateMenus,
@@ -16,8 +21,6 @@ export const Grupos = () => {
     openModal: openMenus,
     closeModal: closeMenus,
   } = useModal<GrupoRes>("Permisos de menús");
-
-
 
   const columns = createColumns<GrupoRes>([
     {
@@ -33,11 +36,12 @@ export const Grupos = () => {
   return (
     <PageContainer title="Grupos">
       <TableContainer
+        toast={alertSuccess}
         name="grupos"
         fixKey="id"
         columns={columns}
         data={res?.data}
-        reload={getData} 
+        reload={getData}
         controls={[
           {
             label: "Asignar menús",
@@ -45,9 +49,9 @@ export const Grupos = () => {
           },
         ]}
       />
-
-     <Floating state={stateMenus}>
+      <Floating state={stateMenus}>
         <AsignarMenus
+          alertSuccess={alertSuccess}
           item={itemMenus}
           onSuccess={(data) => {
             modifyData(data, (row) => row.id === data.id);
@@ -55,9 +59,8 @@ export const Grupos = () => {
           }}
           close={closeMenus}
         />
-      </Floating> *
+      </Floating>{" "}
+      *
     </PageContainer>
   );
 };
-
-

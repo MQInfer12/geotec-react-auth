@@ -10,7 +10,6 @@ import Title from "@/components/common/title/title";
 import Expandable from "@/components/common/utils/expandable";
 import { Modelo } from "@/interfaces/modelo";
 import { useRequest } from "@/hooks/useRequest";
-import { alertSuccess } from "@/utils/alertsToast";
 import { PageContainer } from "@/components/common/pageContainer/pageContainer";
 
 
@@ -18,6 +17,7 @@ interface Props {
   item: GrupoRes | null;
   onSuccess: (data: GrupoRes) => void;
   close: () => void;
+  alertSuccess: (msg:string) => void
 }
 
 interface Body {
@@ -31,7 +31,7 @@ interface Body {
   }[];
 }
 
-const AsignarMenus = ({ item, onSuccess, close }: Props) => {
+const AsignarMenus = ({ item, onSuccess, close, alertSuccess }: Props) => {
    const { res } = useGet<MenuRes[]>(ENDPOINTS.MENU.GET); 
   const { sendRequest } = useRequest();
   const [form, setForm] = useState<Body[]>([]);

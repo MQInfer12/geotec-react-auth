@@ -6,7 +6,6 @@ import TableSkeleton from "./tableSkeleton";
 import { Control } from "../controls/controls";
 import { useTableConfig } from "./hooks/useTableConfig";
 import { MarkersType, SaveSearchType } from "@/interfaces/SaveSearch";
-import { alertSuccess } from "../../../utils/alertsToast";
 
 export interface TableButton {
   title: string;
@@ -34,6 +33,7 @@ interface Props<T> {
   fixKey?: keyof T;
   rowStyle?: (row: T) => CSSProperties;
   search?: boolean;
+  toast: (msg:string) => void
 }
 
 export type TableView = "table" | "PDF";
@@ -51,6 +51,7 @@ export const TableContainer = <T,>({
   fixKey,
   rowStyle,
   search = true,
+  toast
 }: Props<T>) => {
   const [sorting, setSorting] = useState<any[]>([]); //data got of the filter
   const [reloadCount, setReloadCount] = useState(0);
@@ -204,7 +205,7 @@ export const TableContainer = <T,>({
     ? async () => {
         setReloadCount((old) => old + 1);
         await reloadFn();
-        alertSuccess("Recarga exitosa");
+        toast("Recarga exitosa");
       }
     : undefined;
 

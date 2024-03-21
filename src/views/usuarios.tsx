@@ -1,14 +1,23 @@
 import { ENDPOINTS } from "@/constants/endpoints";
-import { PageContainer, TableContainer, createColumns, useGet } from "..";
 import { UsuarioRes } from "@/interfaces/UsuarioRes";
 import { useModal } from "@/components/common/modal/hook/useModal";
 import Floating from "@/components/common/floating";
 import Form from "@/components/common/form/form";
 import { GrupoRes } from "@/interfaces/GrupoRes";
+import { PageContainer } from "@/components/common/pageContainer/pageContainer";
+import { TableContainer } from "@/components/common/table/tableContainer";
+import { useGet } from "@/hooks/useGet";
+import { createColumns } from "@/utils/createColumns";
 
-export const Users = () => {
-  const { res, getData, modifyData } = useGet<UsuarioRes[]>(ENDPOINTS.USUARIO.GET);
+interface Props {
+  alertSuccess: (msg:string) => void;
+  alertError: (msg:string) => void;
+}
 
+export const Users = ({ alertError, alertSuccess }: Props) => {
+  const { res, getData, modifyData } = useGet<UsuarioRes[]>(
+    ENDPOINTS.USUARIO.GET
+  );
 
   const columns = createColumns<UsuarioRes>([
     {
@@ -45,6 +54,7 @@ export const Users = () => {
   return (
     <PageContainer title="Usuarios">
       <TableContainer
+        toast={alertSuccess}
         name="usuarios"
         fixKey="id"
         columns={columns}
@@ -60,6 +70,9 @@ export const Users = () => {
       <Floating state={stateGrupos} width="30%">
         <PageContainer title="Asignar grupos" backRoute={closeGrupos}>
           <Form
+          alertError={alertError}
+          alertSuccess={alertSuccess}
+
             item={itemGrupos}
             initialValues={{
               grupos: itemGrupos?.grupos.map((value) => value.id) || [],
@@ -73,7 +86,7 @@ export const Users = () => {
                 modifyData(data, (value) => value.id === data.id);
                 closeGrupos();
               },
-            }} 
+            }}
           >
             <Form.Select<GrupoRes>
               route={ENDPOINTS.GRUPO.GET}
@@ -90,5 +103,3 @@ export const Users = () => {
     </PageContainer>
   );
 };
-
-
