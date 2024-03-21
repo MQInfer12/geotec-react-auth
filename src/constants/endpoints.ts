@@ -6,7 +6,7 @@ export enum AUTH {
 }
 
 enum GRUPO {
-  BASE = "recGrupo",
+  BASE = "RecGrupo",
   GET = GRUPO.BASE,
   GETALL = GRUPO.BASE + "/all",
   FIND = GRUPO.BASE + "/",

@@ -61,7 +61,7 @@ const Input = ({
       )}
       <div className="relative">
         {icon && (
-          <div className="h-[80%] aspect-square absolute top-1/2 -translate-y-1/2 p-2 text-gray-600">
+          <div className="h-full aspect-square absolute top-1/2 -translate-y-1/2 p-2 text-gray-600">
             {icon}
           </div>
         )}

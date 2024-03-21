@@ -1,4 +1,4 @@
-/* import { GrupoRes } from "@/interfaces/GrupoRes";
+import { GrupoRes } from "@/interfaces/GrupoRes";
 import { ENDPOINTS } from "@/constants/endpoints";
 import { MenuRes } from "@/interfaces/MenuRes";
 import { useGet } from "@/hooks/useGet";
@@ -31,8 +31,7 @@ interface Body {
 }
 
 const AsignarMenus = ({ item, onSuccess, close }: Props) => {
-  const { res } = useGet<MenuRes[]>(ENDPOINTS.MENU.GET);
-  console.log(res);
+   const { res } = useGet<MenuRes[]>(ENDPOINTS.MENU.GET); 
   const { sendRequest } = useRequest();
   const [form, setForm] = useState<Body[]>([]);
 
@@ -222,4 +221,4 @@ const AsignarMenus = ({ item, onSuccess, close }: Props) => {
 };
 
 export default AsignarMenus;
- */
+ 

@@ -39,7 +39,7 @@ export const useGet = <T,>(
 
       //const token = getAuthCookie();
       const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjA2Y2NlNGE0LTE2YzQtNDUwOC05MWFlLWZkYzUxYTI3NWQxYiIsImV4cCI6MTcxMDk0ODEwMSwiaXNzIjoiaHR0cHM6Ly9nZW90ZWMuY29tIiwiYXVkIjoiaHR0cHM6Ly9nZW90ZWMuY29tIn0.uXzObZg7YqySCK6db383nr5YN6V6SKxOoXLptCSfnrY";
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjVhOGY0YjYyLTJhYjQtNDU1My1hZmNhLTQzOGJkNjgwZjA0YyIsImV4cCI6MTcxMTEwOTc0OCwiaXNzIjoiaHR0cHM6Ly9nZW90ZWMuY29tIiwiYXVkIjoiaHR0cHM6Ly9nZW90ZWMuY29tIn0.CwF05XdX5W0G7Mi_kHRMJW7YK1c5lSbe2nmGq2A2QYA";
       const response = await fetch(
         endPoint,
         token

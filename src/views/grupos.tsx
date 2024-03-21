@@ -3,10 +3,12 @@ import { GrupoRes } from "@/interfaces/GrupoRes";
 import { PageContainer, TableContainer, createColumns, useGet } from "..";
 import { useModal } from "@/components/common/modal/hook/useModal";
 import Floating from "@/components/common/floating";
-/* import AsignarMenus from "./components/asignarAccesos"; */
+ import AsignarMenus from "./components/asignarAccesos"; 
 
 export const Grupos = () => {
-  const { res, getData } = useGet<GrupoRes[]>(ENDPOINTS.GRUPO.GET);
+ const { res, getData } = useGet<GrupoRes[]>(ENDPOINTS.GRUPO.GET); 
+
+
 
   const {
     state: stateMenus,
@@ -14,6 +16,8 @@ export const Grupos = () => {
     openModal: openMenus,
     closeModal: closeMenus,
   } = useModal<GrupoRes>("Permisos de menús");
+
+
 
   const columns = createColumns<GrupoRes>([
     {
@@ -33,7 +37,7 @@ export const Grupos = () => {
         fixKey="id"
         columns={columns}
         data={res?.data}
-        reload={getData}
+        reload={getData} 
         controls={[
           {
             label: "Asignar menús",
@@ -42,7 +46,7 @@ export const Grupos = () => {
         ]}
       />
 
- {/*      <Floating state={stateMenus}>
+     <Floating state={stateMenus}>
         <AsignarMenus
           item={itemMenus}
           onSuccess={() => {
@@ -50,7 +54,7 @@ export const Grupos = () => {
           }}
           close={closeMenus}
         />
-      </Floating> */}
+      </Floating> *
     </PageContainer>
   );
 };
