@@ -2,7 +2,6 @@ import { Formik, Form as FormikForm } from "formik";
 import { useRequest } from "@/hooks/useRequest";
 import { confirmAlert, errorAlert } from "@/utils/alerts";
 import Button from "../button/button";
-import { alertSuccess } from "../../../utils/alertsToast";
 import FormColumn from "./formColumn";
 import FormInput from "./input/formInput";
 import FormSelect from "./select/formSelect"; 
@@ -34,6 +33,8 @@ interface Props<T, U, V> {
   disabled?: boolean;
   debug?: boolean;
   validateBeforeSend?: (values: U) => boolean;
+  alertSuccess: (msg:string) => void
+  alertError: (msg:string) => void
 }
 
 interface SendRequest<V, U> {
@@ -59,6 +60,8 @@ const Form = <T, U, V = T>({
   disabled = false,
   debug,
   button,
+  alertSuccess,
+  alertError,
   onChange = () => {},
   validateBeforeSend = () => true,
 }: Props<T, U, V>) => {
@@ -177,7 +180,7 @@ const Form = <T, U, V = T>({
         onSubmit={handleSend}
       >
         <FormikForm className="flex flex-col gap-6" onChange={onChange}>
-          <FormErrorNotification debug={debug} />
+          <FormErrorNotification debug={debug} alertError={alertError} />
           {title && <Title textAlign="center">{title}</Title>}
           <div className="flex gap-6 gap-y-2 flex-wrap justify-center">
             {children}
