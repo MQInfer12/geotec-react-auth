@@ -36,9 +36,9 @@ export const useRequest = () => {
       blobFilename: options?.blobFilename || "",
       headers: options?.headers || {},
     };
-      const token = getAuthCookie(); 
-   /*  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjU4YTk2ZGVjLTAyYWEtNGY5OC04N2I4LTBkZTA5ZDc3M2Y0MiIsIlByb2plY3RJZCI6ImJhYzM5YWRhLTgwYjItNDBlZC05YTdmLTcxNjRkMWU3MjlkMyIsImV4cCI6MTcxMTExOTcwNCwiaXNzIjoiaHR0cHM6Ly9nZW90ZWMuY29tIiwiYXVkIjoiaHR0cHM6Ly9nZW90ZWMuY29tIn0.1K9If-0pDmOZojVGGbFRu0pjouRE0NebxMPdyQYo6QQ"
-      */
+    //const token = getAuthCookie();
+    const token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjU4YTk2ZGVjLTAyYWEtNGY5OC04N2I4LTBkZTA5ZDc3M2Y0MiIsIlByb2plY3RJZCI6ImJhYzM5YWRhLTgwYjItNDBlZC05YTdmLTcxNjRkMWU3MjlkMyIsImV4cCI6MTcxMTEzNjczMSwiaXNzIjoiaHR0cHM6Ly9nZW90ZWMuY29tIiwiYXVkIjoiaHR0cHM6Ly9nZW90ZWMuY29tIn0.9aa5p-vqvnYA_X0aRyrMNvr3zZcdfKt9WVK0UjnIOls";
 
     let response: any;
     if (body instanceof FormData) {

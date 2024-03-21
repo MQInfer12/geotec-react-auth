@@ -17,8 +17,8 @@ export const deleteAuthCookie = () => {
 };
 
 function getC(cname: string) {
-  let name = cname + "=";
-  let ca = document.cookie.split(";");
+  const name = cname + "=";
+  const ca = document.cookie.split(";");
   for (let i = 0; i < ca.length; i++) {
     let c = ca[i];
     while (c.charAt(0) == " ") {
