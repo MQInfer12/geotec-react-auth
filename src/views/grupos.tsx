@@ -7,13 +7,21 @@ import { createColumns } from "@/utils/createColumns";
 import { useGet } from "@/hooks/useGet";
 import { PageContainer } from "@/components/common/pageContainer/pageContainer";
 import { TableContainer } from "@/components/common/table/tableContainer";
+import Modal from "@/components/common/modal";
+import { GrupoForm, grupoSchema } from "@/validations/grupo";
+import Form from "@/components/common/form/form";
 
 interface Props {
   alertSuccess: (msg: string) => void;
+  alertError: (msg: string) => void;
 }
 
-export const Grupos = ({ alertSuccess }: Props) => {
-  const { res, getData, modifyData } = useGet<GrupoRes[]>(ENDPOINTS.GRUPO.GET);
+export const Grupos = ({ alertSuccess, alertError }: Props) => {
+  const { res, getData, modifyData, pushData, filterData } = useGet<GrupoRes[]>(ENDPOINTS.GRUPO.GET);
+
+  const { state, item, openModal, closeModal } = useModal<GrupoRes>(
+    "Formulario de grupo"
+  );
 
   const {
     state: stateMenus,
@@ -21,6 +29,8 @@ export const Grupos = ({ alertSuccess }: Props) => {
     openModal: openMenus,
     closeModal: closeMenus,
   } = useModal<GrupoRes>("Permisos de menús");
+
+
 
   const columns = createColumns<GrupoRes>([
     {
@@ -40,9 +50,14 @@ export const Grupos = ({ alertSuccess }: Props) => {
         name="grupos"
         fixKey="id"
         columns={columns}
+        add={() => openModal()}
         data={res?.data}
         reload={getData}
         controls={[
+          {
+            label: "Modificar",
+            fn: (row) => openModal(row),
+          },
           {
             label: "Asignar menús",
             fn: (row) => openMenus(row),
@@ -59,8 +74,50 @@ export const Grupos = ({ alertSuccess }: Props) => {
           }}
           close={closeMenus}
         />
-      </Floating>{" "}
-      *
+      </Floating>
+
+
+      <Modal state={state}>
+        <Form<GrupoRes, GrupoForm>
+          alertSuccess={alertSuccess}
+          alertError={alertError}
+          item={item}
+          initialValues={{
+            nombre: item?.nombre || "",
+            descripcion: item?.descripcion || "",
+          }}
+          validationSchema={grupoSchema}
+          post={{
+            route: ENDPOINTS.GRUPO.POST,
+            onBody: (value) => value,
+            onSuccess: (data) => {
+              pushData(data);
+              closeModal();
+            },
+          }}
+          put={{
+            route: ENDPOINTS.GRUPO.PUT + item?.id,
+            onBody: (value) => value,
+            onSuccess: (data) => {
+              modifyData(data, (value) => value.id === data.id);
+              closeModal();
+            },
+          }}
+          del={{
+            route: ENDPOINTS.GRUPO.DELETE + item?.id,
+            onSuccess: (data) => {
+              filterData((value) => value.id !== data.id);
+              closeModal();
+            },
+          }}
+        >
+          <Form.Column>
+            <Form.Input name="nombre" title="Nombre" />
+            <Form.Input name="descripcion" title="Descripcion" />
+          </Form.Column>
+        </Form>
+      </Modal>
+      
     </PageContainer>
   );
 };
