@@ -1,6 +1,6 @@
+import Button from "@/components/common/button/button";
 import { useUser } from "../..";
 import IconX from "../../assets/icons/iconX";
-import Button from "../../components/button";
 import { MenuHijo } from "../../interfaces/menu";
 import styles from "../dashboard.module.css";
 import Link from "./link";

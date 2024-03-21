@@ -1,14 +1,16 @@
 import { ENDPOINTS } from "@/constants/endpoints";
-import { PageContainer, TableContainer, createColumns, useGet } from "..";
 import { UsuarioRes } from "@/interfaces/UsuarioRes";
 import { useModal } from "@/components/common/modal/hook/useModal";
 import Floating from "@/components/common/floating";
 import Form from "@/components/common/form/form";
 import { GrupoRes } from "@/interfaces/GrupoRes";
+import { PageContainer } from "@/components/common/pageContainer/pageContainer";
+import { TableContainer } from "@/components/common/table/tableContainer";
+import { useGet } from "@/hooks/useGet";
+import { createColumns } from "@/utils/createColumns";
 
 export const Users = () => {
   const { res, getData, modifyData } = useGet<UsuarioRes[]>(ENDPOINTS.USUARIO.GET);
-
 
   const columns = createColumns<UsuarioRes>([
     {
