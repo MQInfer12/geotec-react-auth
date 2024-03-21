@@ -1,8 +1,8 @@
-import IconX from "../../../assets/iconC";
 import { ModalState } from "./hook/useModal";
 import Button from "../button/button";
 import Title from "../title/title";
 import "@/index.css";
+import IconX from "../../../assets/icons/iconX";
 
 interface Props {
   children: React.ReactNode;

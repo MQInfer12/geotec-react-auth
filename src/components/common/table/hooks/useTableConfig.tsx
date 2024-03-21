@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { ColumnDef } from "@tanstack/react-table";
-/* import { useUser } from "@/contexts/user"; */
-import { MarkersType, SaveSearchType } from "@/interfaces/SaveSearch";
+import { MarkersType, SaveSearchType } from "../../../../interfaces/SaveSearch";
 
 export interface TableConfig {
   visibleColumns: VisibleColumn[];
@@ -24,7 +23,7 @@ export const useTableConfig = (
   name?: string
 ) => {
   /*   const { tableConfig } = useUser(); */
-  const tableConfig = null; 
+  const tableConfig = null;
   const getLocalStorage = () => {
     if (!name) return null;
 

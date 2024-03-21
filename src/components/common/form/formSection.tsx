@@ -1,8 +1,8 @@
 import { useState } from "react";
-import IconDown from "@assets/icons/iconDown";
 import Button from "../button/button";
 import Expandable from "../utils/expandable";
-import IconUp from "@assets/icons/iconUp";
+import IconUp from "../../../assets/icons/iconUp";
+import IconDown from "../../../assets/icons/iconDown";
 
 interface Props {
   title?: string;

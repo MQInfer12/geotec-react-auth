@@ -1,4 +1,4 @@
-import IconInfo from "@assets/icons/iconInfo";
+import IconInfo from "../../../assets/icons/iconInfo";
 import Dropdown from "../dropdown/dropdown";
 import ObjectMapper from "../objectMapper/objectMapper";
 

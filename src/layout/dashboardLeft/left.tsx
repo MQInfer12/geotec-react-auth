@@ -14,6 +14,7 @@ interface Props {
   openNav: boolean;
   initialRoute: string;
   asideIcons: Record<string, JSX.Element>;
+  logo: string;
 }
 
 const Left = ({
@@ -23,7 +24,8 @@ const Left = ({
   open,
   openNav,
   initialRoute,
-  asideIcons
+  asideIcons,
+  logo
 }: Props) => {
   const { menus: asideData } = useUser();
   const navigate = useNavigate();
@@ -50,6 +52,7 @@ const Left = ({
           }}
           initialRoute={initialRoute}
           open={open}
+          logo={logo}
         />
         <div className="h-full flex flex-col overflow-y-auto no-scrollbar">
           {asideData?.map((value) => (

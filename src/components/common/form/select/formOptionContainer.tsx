@@ -1,7 +1,7 @@
 import { useId } from "react";
 import Expandable from "../../utils/expandable";
-import IconSearch from "@assets/icons/iconSearch";
 import { createPortal } from "react-dom";
+import IconSearch from "../../../../assets/icons/iconSearch";
 
 interface Props {
   open: boolean;

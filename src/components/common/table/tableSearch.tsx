@@ -1,17 +1,17 @@
-import IconSearch from "@assets/icons/iconSearch";
 import Input from "../inputs/input";
 import Button from "../button/button";
-import IconX from "@assets/icons/iconX";
-import IconFilterAdd from "@assets/icons/iconFilterAdd";
-import IconBookmark from "@assets/icons/iconBookmark";
-import IconSave from "@assets/icons/iconSave";
-import { MarkersType, SaveSearchType } from "@/interfaces/SaveSearch";
 import { ColumnDef } from "@tanstack/react-table";
 import Dropdown from "../dropdown/dropdown";
 import { TableConfig } from "./hooks/useTableConfig";
-import IconTrash from "@assets/icons/iconTrash";
 import { DateFilter } from "./tableContainer";
 import { useEffect } from "react";
+import { MarkersType, SaveSearchType } from "../../../interfaces/SaveSearch";
+import IconSearch from "../../../assets/icons/iconSearch";
+import IconFilterAdd from "../../../assets/icons/iconFilterAdd";
+import IconX from "../../../assets/icons/iconX";
+import IconBookmark from "../../../assets/icons/iconBookmark";
+import IconTrash from "../../../assets/icons/iconTrash";
+import IconSave from "../../../assets/icons/iconSave";
 
 interface Props {
   dateFilterState: [

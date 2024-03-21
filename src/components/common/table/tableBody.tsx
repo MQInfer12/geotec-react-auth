@@ -2,8 +2,8 @@ import { Row, Table, flexRender } from "@tanstack/react-table";
 import Controls, { Control } from "../controls/controls";
 import { TableConfig } from "./hooks/useTableConfig";
 import TableRelational from "./tableRelational";
-import { tailwindColors } from "@/utils/tailwindConfig";
 import { CSSProperties } from "react";
+import { tailwindColors } from "../../../utils/tailwindConfig";
 
 interface TBodyProps {
   table: Table<any>;

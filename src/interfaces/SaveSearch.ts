@@ -1,4 +1,4 @@
-import { DateFilter } from "@/components/common/table/tableContainer";
+import { DateFilter } from "../components/common/table/tableContainer";
 
 export type SaveSearchType = {
   selectFilter: string;

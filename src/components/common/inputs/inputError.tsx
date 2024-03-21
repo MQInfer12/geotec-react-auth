@@ -1,4 +1,4 @@
-import IconError from "@assets/icons/iconError";
+import IconError from "../../../assets/icons/iconError";
 
 interface Props {
   error?: string;

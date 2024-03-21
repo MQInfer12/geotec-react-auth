@@ -1,5 +1,5 @@
 import { ErrorMessage } from "formik";
-import IconError from "@assets/icons/iconError";
+import IconError from "../../../assets/icons/iconError";
 
 interface Props {
   name: string;

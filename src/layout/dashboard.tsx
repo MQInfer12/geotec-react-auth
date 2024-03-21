@@ -6,6 +6,7 @@ import Right from "./dashboardRight/right";
 import { useHeaderPage } from "../hooks/useHeaderPage";
 import KeyboardControls from "./keyboardControls";
 import { MenuHijo } from "../interfaces/menu";
+import MissingLogo from "../assets/images/missing.png";
 
 interface Props {
   initialRoute: string;
@@ -13,6 +14,7 @@ interface Props {
   subtitleOnPage?: Record<string, string>;
   asideIcons?: Record<string, JSX.Element>;
   header?: JSX.Element;
+  logo?: string;
 }
 
 export const Dashboard = ({
@@ -21,6 +23,7 @@ export const Dashboard = ({
   initialRoute,
   asideIcons = {},
   header,
+  logo = MissingLogo,
 }: Props) => {
   const [openNav] = useState(false);
   const [open, setOpen] = useState(false);
@@ -48,6 +51,7 @@ export const Dashboard = ({
           openNav={openNav}
           initialRoute={initialRoute}
           asideIcons={asideIcons}
+          logo={logo}
         />
         <Right
           open={open}

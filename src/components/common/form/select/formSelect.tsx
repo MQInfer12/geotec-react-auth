@@ -1,6 +1,5 @@
 import React, { useEffect, useId, useState } from "react";
 import { useFormikContext } from "formik";
-import { useGet } from "@/hooks/useGet";
 import { useFormContext, useRequiredField } from "../formContext";
 import FormOption from "./formOption";
 import { FormSelectContext } from "./formSelectContext";
@@ -129,6 +128,7 @@ const FormSelect = <T,>({
         const actualValues: MultipleValue[] = res.data
           //@ts-ignore
           .filter((v) => actualValue.includes(v[key]))
+          //@ts-ignore
           .map((v) => ({
             //@ts-ignore
             value: v[key] as string,
@@ -240,7 +240,7 @@ const FormSelect = <T,>({
                       Cargando...
                     </FormOption>
                   ) : res.data.length > 0 ? (
-                    res?.data.map((item) => (
+                    res?.data.map((item: any) => (
                       <FormOption
                         //@ts-ignore
                         key={item[props.optionValueKey] as string}

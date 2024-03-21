@@ -1,23 +1,22 @@
-import { GrupoRes } from "@/interfaces/GrupoRes";
-import { ENDPOINTS } from "@/constants/endpoints";
-import { MenuRes } from "@/interfaces/MenuRes";
-import { useGet } from "@/hooks/useGet";
-import Loader from "@/components/common/loader/loader";
-import Checkbox from "@/components/common/inputs/checkbox";
-import Button from "@/components/common/button/button";
 import { useLayoutEffect, useState } from "react";
-import Title from "@/components/common/title/title";
-import Expandable from "@/components/common/utils/expandable";
-import { Modelo } from "@/interfaces/modelo";
-import { useRequest } from "@/hooks/useRequest";
-import { PageContainer } from "@/components/common/pageContainer/pageContainer";
-
+import { GrupoRes } from "../../interfaces/GrupoRes";
+import { MenuRes } from "../../interfaces/MenuRes";
+import { useGet } from "../../hooks/useGet";
+import { useRequest } from "../../hooks/useRequest";
+import { Modelo } from "../../interfaces/modelo";
+import { ENDPOINTS } from "../../constants/endpoints";
+import Loader from "../../components/common/loader/loader";
+import { PageContainer } from "../../components/common/pageContainer/pageContainer";
+import Button from "../../components/common/button/button";
+import Checkbox from "../../components/common/inputs/checkbox";
+import Expandable from "../../components/expandable";
+import Title from "../../components/common/title/title";
 
 interface Props {
   item: GrupoRes | null;
   onSuccess: (data: GrupoRes) => void;
   close: () => void;
-  alertSuccess: (msg:string) => void
+  alertSuccess: (msg: string) => void;
 }
 
 interface Body {
@@ -32,7 +31,7 @@ interface Body {
 }
 
 const AsignarMenus = ({ item, onSuccess, close, alertSuccess }: Props) => {
-   const { res } = useGet<MenuRes[]>(ENDPOINTS.MENU.GET); 
+  const { res } = useGet<MenuRes[]>(ENDPOINTS.MENU.GET);
   const { sendRequest } = useRequest();
   const [form, setForm] = useState<Body[]>([]);
 
@@ -222,4 +221,3 @@ const AsignarMenus = ({ item, onSuccess, close, alertSuccess }: Props) => {
 };
 
 export default AsignarMenus;
- 

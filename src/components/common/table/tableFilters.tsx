@@ -1,4 +1,4 @@
-import IconMove from "@assets/icons/iconMove";
+import IconMove from "../../../assets/icons/iconMove";
 import Button from "../button/button";
 import { TableConfig, VisibleColumn } from "./hooks/useTableConfig";
 import { useState } from "react";

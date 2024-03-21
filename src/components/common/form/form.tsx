@@ -1,6 +1,4 @@
 import { Formik, Form as FormikForm } from "formik";
-import { useRequest } from "@/hooks/useRequest";
-import { confirmAlert, errorAlert } from "@/utils/alerts";
 import Button from "../button/button";
 import FormColumn from "./formColumn";
 import FormInput from "./input/formInput";
@@ -15,6 +13,8 @@ import { FormContext } from "./formContext";
 /* import FormOption from "./select/formOption"; */
 import FormButton from "./formButton";
 import FormDetail from "./formDetail";
+import { useRequest } from "../../../hooks/useRequest";
+import { confirmAlert, errorAlert } from "../../../utils/alerts";
 
 type RequestFn<U> = (value: U) => void | Promise<void>;
 type DeleteFn = () => void | Promise<void>;

@@ -1,6 +1,6 @@
-import IconUp from "@assets/icons/iconUp";
+import IconDown from "../../../../assets/icons/iconDown";
+import IconUp from "../../../../assets/icons/iconUp";
 import { MultipleValue } from "./formSelect";
-import IconDown from "@assets/icons/iconDown";
 
 interface Props {
   id: string;

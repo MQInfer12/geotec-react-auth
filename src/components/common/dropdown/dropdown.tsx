@@ -1,10 +1,10 @@
 import { useId, useState } from "react";
 import Title from "../title/title";
 import Button from "../button/button";
-import IconX from "@assets/icons/iconX";
 import OutsideAlerter from "../utils/outsideAlerter";
 import { autoUpdate, flip, useFloating } from "@floating-ui/react";
 import { createPortal } from "react-dom";
+import IconX from "../../../assets/icons/iconX";
 
 interface Props {
   toggleElement: JSX.Element | ((open: boolean) => JSX.Element);

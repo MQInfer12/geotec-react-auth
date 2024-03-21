@@ -1,13 +1,13 @@
 import { useLocation } from "react-router-dom";
-import Logo from "@assets/images/logo.png";
 
 interface Props {
   onClick: () => void;
   open: boolean;
   initialRoute: string;
+  logo: string;
 }
 
-const LogoButton = ({ onClick, open, initialRoute }: Props) => {
+const LogoButton = ({ onClick, open, initialRoute, logo }: Props) => {
   const { pathname } = useLocation();
 
   const classNames = [
@@ -22,7 +22,7 @@ const LogoButton = ({ onClick, open, initialRoute }: Props) => {
   return (
     <button onClick={onClick} className={classNames.join(" ")}>
       <div className="w-3/5 h-3/5 self-center">
-        <img className="h-full w-full" src={Logo} />
+        <img className="h-full w-full" src={logo} />
       </div>
     </button>
   );

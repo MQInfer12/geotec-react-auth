@@ -8,8 +8,6 @@ import {
   getPaginationRowModel,
   Row,
 } from "@tanstack/react-table";
-import IconArrowAsc from "@assets/icons/iconArrowAsc";
-import IconArrowDesc from "@assets/icons/iconArrowDesc";
 import TablePDF from "./pdf/tablePDF";
 import { DateFilter, TableView } from "./tableContainer";
 import { CSSProperties, forwardRef } from "react";
@@ -18,7 +16,9 @@ import { Control } from "../controls/controls";
 import { TableConfig } from "./hooks/useTableConfig";
 import TablePagination from "./tablePagination";
 import TBody from "./tableBody";
-import { SaveSearchType } from "@/interfaces/SaveSearch";
+import { SaveSearchType } from "../../../interfaces/SaveSearch";
+import IconArrowAsc from "../../../assets/icons/iconArrowAsc";
+import IconArrowDesc from "../../../assets/icons/iconArrowDesc";
 
 interface Props {
   filter: string;

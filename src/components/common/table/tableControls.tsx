@@ -1,19 +1,19 @@
-import IconAdd from "@assets/icons/iconAdd";
 import Button from "../button/button";
-import IconDownload from "@assets/icons/iconExport";
 import TableSearch from "./tableSearch";
-import IconReload from "@assets/icons/iconReload";
 import { DateFilter, TableButton, TableView } from "./tableContainer";
 import { ColumnDef } from "@tanstack/react-table";
 import { TableConfig, VisibleColumn } from "./hooks/useTableConfig";
-import { MarkersType, SaveSearchType } from "@/interfaces/SaveSearch";
 import Dropdown from "../dropdown/dropdown";
-import IconPDF from "@assets/icons/iconPDF";
-import IconXLSX from "@assets/icons/iconXLSX";
-import IconBack from "@assets/icons/iconBack";
 import { DownloadTableExcel } from "react-export-table-to-excel";
 import TableFilters from "./tableFilters";
-import IconColumn from "@assets/icons/iconColumn";
+import { MarkersType, SaveSearchType } from "../../../interfaces/SaveSearch";
+import IconReload from "../../../assets/icons/iconReload";
+import IconDownload from "../../../assets/icons/iconExport";
+import IconPDF from "../../../assets/icons/iconPDF";
+import IconXLSX from "../../../assets/icons/iconXLSX";
+import IconColumn from "../../../assets/icons/iconColumn";
+import IconAdd from "../../../assets/icons/iconAdd";
+import IconBack from "../../../assets/icons/iconBack";
 
 interface Props {
   filter: [string, React.Dispatch<React.SetStateAction<string>>];
@@ -197,9 +197,7 @@ const TableControls = ({
           </Button>
         </div>
       )}
-      <div className="flex-1 overflow-auto h-96">
-        {children}
-      </div>
+      <div className="flex-1 overflow-auto h-96">{children}</div>
     </div>
   );
 };

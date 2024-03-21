@@ -1,12 +1,13 @@
-import { ENDPOINTS } from "@/constants/endpoints";
-import { GrupoRes } from "@/interfaces/GrupoRes";
-import { useModal } from "@/components/common/modal/hook/useModal";
-import Floating from "@/components/common/floating";
- import AsignarMenus from "./components/asignarAccesos"; 
-import { createColumns } from "@/utils/createColumns";
-import { useGet } from "@/hooks/useGet";
-import { PageContainer } from "@/components/common/pageContainer/pageContainer";
-import { TableContainer } from "@/components/common/table/tableContainer";
+import Floating from "../components/common/floating";
+import { useModal } from "../components/common/modal/hook/useModal";
+import { PageContainer } from "../components/common/pageContainer/pageContainer";
+import { TableContainer } from "../components/common/table/tableContainer";
+import { ENDPOINTS } from "../constants/endpoints";
+import { useGet } from "../hooks/useGet";
+import { GrupoRes } from "../interfaces/GrupoRes";
+import { createColumns } from "../utils/createColumns";
+import AsignarMenus from "./components/asignarAccesos"; 
+
 
 interface Props {
   alertSuccess: (msg: string) => void;

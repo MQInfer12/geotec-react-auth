@@ -1,17 +1,17 @@
-import { ENDPOINTS } from "@/constants/endpoints";
-import { UsuarioRes } from "@/interfaces/UsuarioRes";
-import { useModal } from "@/components/common/modal/hook/useModal";
-import Floating from "@/components/common/floating";
-import Form from "@/components/common/form/form";
-import { GrupoRes } from "@/interfaces/GrupoRes";
-import { PageContainer } from "@/components/common/pageContainer/pageContainer";
-import { TableContainer } from "@/components/common/table/tableContainer";
-import { useGet } from "@/hooks/useGet";
-import { createColumns } from "@/utils/createColumns";
+import Floating from "../components/common/floating";
+import Form from "../components/common/form/form";
+import { useModal } from "../components/common/modal/hook/useModal";
+import { PageContainer } from "../components/common/pageContainer/pageContainer";
+import { TableContainer } from "../components/common/table/tableContainer";
+import { ENDPOINTS } from "../constants/endpoints";
+import { useGet } from "../hooks/useGet";
+import { GrupoRes } from "../interfaces/GrupoRes";
+import { UsuarioRes } from "../interfaces/UsuarioRes";
+import { createColumns } from "../utils/createColumns";
 
 interface Props {
-  alertSuccess: (msg:string) => void;
-  alertError: (msg:string) => void;
+  alertSuccess: (msg: string) => void;
+  alertError: (msg: string) => void;
 }
 
 export const Users = ({ alertError, alertSuccess }: Props) => {
@@ -70,9 +70,8 @@ export const Users = ({ alertError, alertSuccess }: Props) => {
       <Floating state={stateGrupos} width="30%">
         <PageContainer title="Asignar grupos" backRoute={closeGrupos}>
           <Form
-          alertError={alertError}
-          alertSuccess={alertSuccess}
-
+            alertError={alertError}
+            alertSuccess={alertSuccess}
             item={itemGrupos}
             initialValues={{
               grupos: itemGrupos?.grupos.map((value) => value.id) || [],

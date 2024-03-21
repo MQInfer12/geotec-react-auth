@@ -1,9 +1,9 @@
 import { Table } from "@tanstack/react-table";
 import Button from "../button/button";
-import IconChevronLeft2 from "@assets/icons/iconChevronLeft2";
-import IconChevronLeft from "@assets/icons/iconChevronLeft";
-import IconChevronRight from "@assets/icons/iconChevronRight";
-import IconChevronRight2 from "@assets/icons/iconChevronRight2";
+import IconChevronLeft2 from "../../../assets/icons/iconChevronLeft2";
+import IconChevronLeft from "../../../assets/icons/iconChevronLeft";
+import IconChevronRight from "../../../assets/icons/iconChevronRight";
+import IconChevronRight2 from "../../../assets/icons/iconChevronRight2";
 
 interface Props {
   table: Table<any>;
