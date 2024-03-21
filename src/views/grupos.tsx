@@ -6,7 +6,7 @@ import Floating from "@/components/common/floating";
  import AsignarMenus from "./components/asignarAccesos"; 
 
 export const Grupos = () => {
- const { res, getData } = useGet<GrupoRes[]>(ENDPOINTS.GRUPO.GET); 
+ const { res, getData, modifyData } = useGet<GrupoRes[]>(ENDPOINTS.GRUPO.GET); 
 
 
 
@@ -49,8 +49,9 @@ export const Grupos = () => {
      <Floating state={stateMenus}>
         <AsignarMenus
           item={itemMenus}
-          onSuccess={() => {
-            alert("click");
+          onSuccess={(data) => {
+            modifyData(data, (row) => row.id === data.id);
+            closeMenus();
           }}
           close={closeMenus}
         />

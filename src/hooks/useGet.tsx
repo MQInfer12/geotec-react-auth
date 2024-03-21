@@ -10,6 +10,14 @@ interface ReturnValues<T> {
   loading: boolean;
   setRes: React.Dispatch<React.SetStateAction<ApiResponse<T> | null>>;
   getData: () => Promise<void>;
+  pushData: (data: T extends Array<infer U> ? U : T) => void;
+  modifyData: (
+    data: T extends Array<infer U> ? U : T,
+    condition: (value: T extends Array<infer U> ? U : T) => boolean
+  ) => void;
+  filterData: (
+    filter: (value: T extends Array<infer U> ? U : T) => boolean
+  ) => void;
 }
 
 interface Options {
@@ -39,7 +47,7 @@ export const useGet = <T,>(
 
       //const token = getAuthCookie();
       const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjVhOGY0YjYyLTJhYjQtNDU1My1hZmNhLTQzOGJkNjgwZjA0YyIsImV4cCI6MTcxMTEwOTc0OCwiaXNzIjoiaHR0cHM6Ly9nZW90ZWMuY29tIiwiYXVkIjoiaHR0cHM6Ly9nZW90ZWMuY29tIn0.CwF05XdX5W0G7Mi_kHRMJW7YK1c5lSbe2nmGq2A2QYA";
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6ImZiNmQyMGUyLTBiMmQtNGQxZS05M2EyLTk1YjJlMzZhM2E2YyIsImV4cCI6MTcxMTExNTI2MywiaXNzIjoiaHR0cHM6Ly9nZW90ZWMuY29tIiwiYXVkIjoiaHR0cHM6Ly9nZW90ZWMuY29tIn0.hRomcQniXjKtKoL8yw-SGsDOG-K3xvqodabaY8vX8m0";
       const response = await fetch(
         endPoint,
         token
@@ -79,6 +87,49 @@ export const useGet = <T,>(
     }
   };
 
+  const pushData = (data: T extends Array<infer U> ? U : T) => {
+    setRes((old) => {
+      if (!old) return null;
+      if (!Array.isArray(old.data)) return old;
+      return {
+        ...old,
+        data: [...old.data, data] as T,
+      };
+    });
+  };
+
+  const filterData = (
+    filter: (value: T extends Array<infer U> ? U : T) => boolean
+  ) => {
+    setRes((old) => {
+      if (!old) return null;
+      if (!Array.isArray(old.data)) return old;
+      return {
+        ...old,
+        data: old.data.filter((value) => filter(value)) as T,
+      };
+    });
+  };
+
+  const modifyData = (
+    data: T extends Array<infer U> ? U : T,
+    condition: (value: T extends Array<infer U> ? U : T) => boolean
+  ) => {
+    setRes((old) => {
+      if (!old) return null;
+      if (!Array.isArray(old.data)) return old;
+      return {
+        ...old,
+        data: old.data.map((value) => {
+          if (condition(value)) {
+            return data;
+          }
+          return value;
+        }) as T,
+      };
+    });
+  };
+
   useEffect(() => {
     if (options.send) {
       getData();
@@ -90,5 +141,8 @@ export const useGet = <T,>(
     loading,
     setRes,
     getData,
+    pushData, 
+    filterData, 
+    modifyData,
   };
 };

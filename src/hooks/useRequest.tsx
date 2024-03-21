@@ -12,8 +12,8 @@ interface Options {
 }
 
 const downloadFile = (blob: Blob, filename: string) => {
-  var url = window.URL.createObjectURL(blob);
-  var a = document.createElement("a");
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement("a");
   a.href = url;
   a.download = filename;
   document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
@@ -36,7 +36,10 @@ export const useRequest = () => {
       blobFilename: options?.blobFilename || "",
       headers: options?.headers || {},
     };
-    const token = getAuthCookie();
+    /*  const token = getAuthCookie(); */
+    const token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6ImZiNmQyMGUyLTBiMmQtNGQxZS05M2EyLTk1YjJlMzZhM2E2YyIsImV4cCI6MTcxMTExNTI2MywiaXNzIjoiaHR0cHM6Ly9nZW90ZWMuY29tIiwiYXVkIjoiaHR0cHM6Ly9nZW90ZWMuY29tIn0.hRomcQniXjKtKoL8yw-SGsDOG-K3xvqodabaY8vX8m0";
+
     let response: any;
     if (body instanceof FormData) {
       response = await fetch(`${thisOptions.baseUrl}${route}`, {
@@ -81,7 +84,7 @@ export const useRequest = () => {
     downloadFile(blob, thisOptions.blobFilename);
     return null;
   };
-  
+
   return {
     sendRequest,
   };
