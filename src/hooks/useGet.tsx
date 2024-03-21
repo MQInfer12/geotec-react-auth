@@ -47,7 +47,7 @@ export const useGet = <T,>(
 
       //const token = getAuthCookie();
       const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6ImZiNmQyMGUyLTBiMmQtNGQxZS05M2EyLTk1YjJlMzZhM2E2YyIsImV4cCI6MTcxMTExNTI2MywiaXNzIjoiaHR0cHM6Ly9nZW90ZWMuY29tIiwiYXVkIjoiaHR0cHM6Ly9nZW90ZWMuY29tIn0.hRomcQniXjKtKoL8yw-SGsDOG-K3xvqodabaY8vX8m0";
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjU4YTk2ZGVjLTAyYWEtNGY5OC04N2I4LTBkZTA5ZDc3M2Y0MiIsIlByb2plY3RJZCI6ImJhYzM5YWRhLTgwYjItNDBlZC05YTdmLTcxNjRkMWU3MjlkMyIsImV4cCI6MTcxMTExOTcwNCwiaXNzIjoiaHR0cHM6Ly9nZW90ZWMuY29tIiwiYXVkIjoiaHR0cHM6Ly9nZW90ZWMuY29tIn0.1K9If-0pDmOZojVGGbFRu0pjouRE0NebxMPdyQYo6QQ";
       const response = await fetch(
         endPoint,
         token
@@ -141,8 +141,8 @@ export const useGet = <T,>(
     loading,
     setRes,
     getData,
-    pushData, 
-    filterData, 
+    pushData,
+    filterData,
     modifyData,
   };
 };

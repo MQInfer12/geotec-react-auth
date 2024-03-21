@@ -7,14 +7,8 @@ import Form from "@/components/common/form/form";
 import { GrupoRes } from "@/interfaces/GrupoRes";
 
 export const Users = () => {
-  const { res, getData } = useGet<UsuarioRes[]>(ENDPOINTS.USUARIO.GET);
+  const { res, getData, modifyData } = useGet<UsuarioRes[]>(ENDPOINTS.USUARIO.GET);
 
-  const {
-    state: stateGrupos,
-    openModal: openGrupos,
-    closeModal: closeGrupos,
-    item: itemGrupos,
-  } = useModal<UsuarioRes>("Permisos de grupos");
 
   const columns = createColumns<UsuarioRes>([
     {
@@ -39,6 +33,15 @@ export const Users = () => {
     },
   ]);
 
+  const {
+    state: stateGrupos,
+    item: itemGrupos,
+    openModal: openGrupos,
+    closeModal: closeGrupos,
+  } = useModal<UsuarioRes>("Permisos de grupos");
+
+  console.log(itemGrupos);
+
   return (
     <PageContainer title="Usuarios">
       <TableContainer
@@ -57,12 +60,11 @@ export const Users = () => {
       <Floating state={stateGrupos} width="30%">
         <PageContainer title="Asignar grupos" backRoute={closeGrupos}>
           <Form
-            debug
             item={itemGrupos}
             initialValues={{
-              grupos: [],
+              grupos: itemGrupos?.grupos.map((value) => value.id) || [],
             }}
-/*             put={{
+            put={{
               route: ENDPOINTS.USUARIO.GRUPOS + itemGrupos?.id,
               onBody: (value) => ({
                 idsGrupo: value.grupos,
@@ -71,7 +73,7 @@ export const Users = () => {
                 modifyData(data, (value) => value.id === data.id);
                 closeGrupos();
               },
-            }} */
+            }} 
           >
             <Form.Select<GrupoRes>
               route={ENDPOINTS.GRUPO.GET}

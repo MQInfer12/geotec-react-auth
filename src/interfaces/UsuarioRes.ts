@@ -1,3 +1,4 @@
+import { GrupoRes } from "./GrupoRes";
 
 
 
@@ -10,6 +11,7 @@ export interface UsuarioRes {
     firma: string
     notificacion: string
     proyecto: string
+    grupos:GrupoRes[]
 
   }
   

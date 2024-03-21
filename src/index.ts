@@ -20,3 +20,5 @@ export { useGet } from "./hooks/useGet";
 export { createColumns } from "./utils/createColumns";
 
 export { Users } from "./views/usuarios";
+
+export { Grupos } from "./views/grupos";
