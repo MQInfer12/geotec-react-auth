@@ -9,8 +9,7 @@ import { useGet } from "../hooks/useGet";
 import { GrupoRes } from "../interfaces/GrupoRes";
 import { createColumns } from "../utils/createColumns";
 import { GrupoForm, grupoSchema } from "../validations/grupo";
-import AsignarMenus from "./components/asignarAccesos"; 
-
+import AsignarMenus from "./components/asignarAccesos";
 
 interface Props {
   alertSuccess: (msg: string) => void;
@@ -18,7 +17,9 @@ interface Props {
 }
 
 export const Grupos = ({ alertSuccess, alertError }: Props) => {
-  const { res, getData, modifyData, pushData, filterData } = useGet<GrupoRes[]>(ENDPOINTS.GRUPO.GET);
+  const { res, getData, modifyData, pushData, filterData } = useGet<GrupoRes[]>(
+    ENDPOINTS.GRUPO.GET
+  );
 
   const { state, item, openModal, closeModal } = useModal<GrupoRes>(
     "Formulario de grupo"
@@ -30,8 +31,6 @@ export const Grupos = ({ alertSuccess, alertError }: Props) => {
     openModal: openMenus,
     closeModal: closeMenus,
   } = useModal<GrupoRes>("Permisos de menús");
-
-
 
   const columns = createColumns<GrupoRes>([
     {
@@ -77,7 +76,6 @@ export const Grupos = ({ alertSuccess, alertError }: Props) => {
         />
       </Floating>
 
-
       <Modal state={state}>
         <Form<GrupoRes, GrupoForm>
           alertSuccess={alertSuccess}
@@ -118,7 +116,6 @@ export const Grupos = ({ alertSuccess, alertError }: Props) => {
           </Form.Column>
         </Form>
       </Modal>
-      
     </PageContainer>
   );
 };
