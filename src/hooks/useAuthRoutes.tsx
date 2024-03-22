@@ -1,4 +1,3 @@
-import { Route } from "react-router-dom";
 import { useAuthContext } from "../contexts/auth";
 
 function getActions(object: any): string[] {
@@ -14,7 +13,7 @@ function getActions(object: any): string[] {
   return acciones;
 }
 
-export const AuthRoutes = () => {
+export const useAuthRoutes = () => {
   const { routeComponents } = useAuthContext();
   const renderRoutes = () => {
     const { menus } = useAuthContext();
@@ -24,11 +23,9 @@ export const AuthRoutes = () => {
       return ableToRender.includes(route);
     });
   };
-  return renderRoutes().map((routeKey) => (
-    <Route
-      key={routeKey}
-      path={routeKey}
-      element={routeComponents[routeKey].component}
-    />
-  ));
+  return renderRoutes().map((routeKey) => ({
+    key: routeKey,
+    path: routeKey,
+    element: routeComponents[routeKey].component,
+  }));
 };

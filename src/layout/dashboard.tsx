@@ -7,6 +7,7 @@ import { useHeaderPage } from "../hooks/useHeaderPage";
 import KeyboardControls from "./keyboardControls";
 import { MenuHijo } from "../interfaces/menu";
 import MissingLogo from "../assets/images/missing.png";
+import { HeaderContextProvider } from "../contexts/header";
 
 interface Props {
   initialRoute: string;
@@ -35,37 +36,39 @@ export const Dashboard = ({
   }, [openNav]);
 
   return (
-    <KeyboardControls>
-      <div className={styles.dashboard}>
-        {open && (
-          <div
-            onClick={() => setOpen(false)}
-            className="z-40 fixed inset-0 bg-[rgba(0,0,0,0.3)] animate-[appear_.3s]"
+    <HeaderContextProvider>
+      <KeyboardControls>
+        <div className={styles.dashboard}>
+          {open && (
+            <div
+              onClick={() => setOpen(false)}
+              className="z-40 fixed inset-0 bg-[rgba(0,0,0,0.3)] animate-[appear_.3s]"
+            />
+          )}
+          <Left
+            open={open}
+            page={page}
+            setPage={setPage}
+            setOpen={setOpen}
+            openNav={openNav}
+            initialRoute={initialRoute}
+            asideIcons={asideIcons}
+            logo={logo}
           />
-        )}
-        <Left
-          open={open}
-          page={page}
-          setPage={setPage}
-          setOpen={setOpen}
-          openNav={openNav}
-          initialRoute={initialRoute}
-          asideIcons={asideIcons}
-          logo={logo}
-        />
-        <Right
-          open={open}
-          page={page}
-          setOpen={setOpen}
-          openNav={openNav}
-          filterRoutes={filterRoutes}
-          subtitleOnPage={subtitleOnPage}
-        />
-        {header}
-        <main className={styles.main + " overflow-auto dark:bg-gray-800"}>
-          <Outlet />
-        </main>
-      </div>
-    </KeyboardControls>
+          <Right
+            open={open}
+            page={page}
+            setOpen={setOpen}
+            openNav={openNav}
+            filterRoutes={filterRoutes}
+            subtitleOnPage={subtitleOnPage}
+          />
+          {header}
+          <main className={styles.main + " overflow-auto dark:bg-gray-800"}>
+            <Outlet />
+          </main>
+        </div>
+      </KeyboardControls>
+    </HeaderContextProvider>
   );
 };
